@@ -20,7 +20,7 @@ System.out.println(creditPaymentPlan.getData().getPaymentPlanList().get(0).getDa
 - Kredi Ödeme Planı
 - Kredi Uygulama Hizmeti
 - Exchange Oranları Servisi
-- BMM Hizmetini Bulma
+- ATM Hizmetini Bulma
 - Şube Hizmetini Bulma
-- Fond Fiyatlar Servisi
+- Font Fiyatlar Servisi
 - Menkul Değerler
