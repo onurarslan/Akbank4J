@@ -4,7 +4,7 @@ import org.akbank4j.core.Akbank4J;
 import org.akbank4j.core.models.CreditInterestRatesModel;
 
 /**
- * Kredi Faiz Oranları API size cari faiz oranlarını almanızı sağlar.
+ * Kredi Faiz Oranları API size güncel faiz oranlarını almanızı sağlar.
  *
  * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
  */
