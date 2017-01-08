@@ -21,6 +21,7 @@ import org.akbank4j.core.models.FindAtmModel;
 import org.akbank4j.core.models.FindBranchModel;
 import org.akbank4j.core.models.FundPricesModel;
 import org.akbank4j.core.models.StockValuesModel;
+import org.akbank4j.core.request.CreditPaymentPlanRequest;
 
 /**
  *
@@ -121,6 +122,15 @@ public class Akbank
       Logger.getLogger(Akbank.class.getName()).log(Level.SEVERE, null, ex);
     }
     return null;
+  }
+
+  @Override
+  public Akbank4J<CreditPaymentPlanModel> getCreditPaymentPlan(CreditPaymentPlanRequest creditPaymentPlan) {
+    return getCreditPaymentPlan(creditPaymentPlan.getBsmv(), creditPaymentPlan.getInterest(), creditPaymentPlan.
+                                getKkdf(),
+                                creditPaymentPlan.getLoanStartDate(), creditPaymentPlan.getLoanUsingDate(),
+                                creditPaymentPlan.getLoanAmount(), creditPaymentPlan.getExpenseAmount(),
+                                creditPaymentPlan.getTerm());
   }
 
   @Override
