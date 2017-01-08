@@ -39,3 +39,4 @@ Konfigurasyon
     System.out.println(creditPaymentPlan.getData().getPaymentPlanList().get(0).getDate());
 
 
+Bu çalışma açık kaynak kodlu olup tüm geliştiricilere açıktır. Akbank'ın Java programlama dili için sunduğu resmi uygulama değildir.
