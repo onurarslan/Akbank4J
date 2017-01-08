@@ -19,7 +19,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import org.akbank4j.core.api.AkbankParameters;
+import org.akbank4j.core.request.AkbankParameters;
 import org.akbank4j.core.authentication.Configuration;
 
 /**

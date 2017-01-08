@@ -2,7 +2,7 @@
 import java.util.List;
 import org.akbank4j.core.Akbank;
 import org.akbank4j.core.Akbank4J;
-import org.akbank4j.core.api.AkbankParameters;
+import org.akbank4j.core.request.AkbankParameters;
 import org.akbank4j.core.api.IAkbank;
 import org.akbank4j.core.authentication.Configuration;
 import org.akbank4j.core.models.CreditApplicationServiceModel;

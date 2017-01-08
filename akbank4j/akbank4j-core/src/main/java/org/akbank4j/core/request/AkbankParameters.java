@@ -1,4 +1,4 @@
-package org.akbank4j.core.api;
+package org.akbank4j.core.request;
 
 /**
  *

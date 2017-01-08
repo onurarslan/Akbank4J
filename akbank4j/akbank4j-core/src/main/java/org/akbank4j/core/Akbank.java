@@ -8,7 +8,7 @@ import java.net.URLEncoder;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.akbank4j.core.api.AkbankParameters;
+import org.akbank4j.core.request.AkbankParameters;
 import org.akbank4j.core.api.AkbankUrl;
 import org.akbank4j.core.api.IAkbank;
 import org.akbank4j.core.authentication.Configuration;
@@ -21,6 +21,7 @@ import org.akbank4j.core.models.FindAtmModel;
 import org.akbank4j.core.models.FindBranchModel;
 import org.akbank4j.core.models.FundPricesModel;
 import org.akbank4j.core.models.StockValuesModel;
+import org.akbank4j.core.request.CreditCardAppRequest;
 import org.akbank4j.core.request.CreditPaymentPlanRequest;
 import org.akbank4j.core.request.FindRequest;
 
@@ -222,6 +223,19 @@ public class Akbank
     return new Gson().fromJson(conn.json,
                                new TypeToken<Akbank4J<CreditApplicationServiceModel>>() {
                        }.getType());
+  }
+
+  @Override
+  public Akbank4J getCreditCardApp(CreditCardAppRequest creditCardApp) {
+    return getCreditCardApp(creditCardApp.getName(), creditCardApp.getSecondName(), creditCardApp.getSurname(),
+                            creditCardApp.getEmail(), creditCardApp.getPhoneNumber(), creditCardApp.getIdentityNumber(),
+                            creditCardApp.getApplication());
+  }
+
+  @Override
+  public Akbank4J getCreditCardApp(String name, String surname, String email,
+                                   String phoneNumber, String identityNumber, String application) {
+    return getCreditCardApp(name, null, surname, email, phoneNumber, identityNumber, application);
   }
 
   @Override
