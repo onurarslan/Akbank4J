@@ -7,7 +7,14 @@
     <packaging>jar</packaging>
     <name>akbank4j</name>
     <description>A Java library for the Akbank API</description>
-    <url>http://twitter4j.org/</url>
+    <url>http://akbank4j.org/</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
     <scm>
         <url>https://github.com/onurarslan/Akbank4J</url>
         <connection>scm:git:https://github.com/onurarslan/Akbank4J.git</connection>
