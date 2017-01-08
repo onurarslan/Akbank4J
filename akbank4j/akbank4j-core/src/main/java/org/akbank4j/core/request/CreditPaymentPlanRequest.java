@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.akbank4j.core.request;
 
 /**
@@ -39,10 +34,22 @@ public class CreditPaymentPlanRequest {
   public CreditPaymentPlanRequest() {
   }
 
-  public CreditPaymentPlanRequest(String bsmv, String interest, String kkdf,
-                                  String loanStartDate, String loanUsingDate,
-                                  String loanAmount, String expenseAmount,
-                                  String term) {
+  /**
+   * Kredi ödeme planı almanızı sağlar.
+   *
+   * <pre>{@code CreditPaymentPlanRequest creditPaymentReq = new CreditPaymentPlanRequest("0.1234", "1.25", "0.1034", "2015-11-10", "2015-11-10", "5000", "10", "36");}</pre>
+   *
+   * @param bsmv          Bankacılık ve Sigortacılık İşlemleri Vergisi Tutarı. (Gereklidir)
+   * @param interest      Faiz oranı. (Gereklidir)
+   * @param kkdf          Kaynak Kullanım Destekleme Fonu. (Gereklidir)
+   * @param loanStartDate İlk ödemenin tarihi .Yyyy-AA-gg biçimindedir. (Gereklidir)
+   * @param loanUsingDate Kredi fonlarının alındığı tarih .yyyy-AA-gg biçiminde. (Gereklidir)
+   * @param loanAmount    Kredinin miktarı. (Gereklidir)
+   * @param expenseAmount Masraf tutarı. (Gereklidir)
+   * @param term          Aylık vadesi. (Gereklidir)
+   */
+  public CreditPaymentPlanRequest(String bsmv, String interest, String kkdf, String loanStartDate, String loanUsingDate,
+                                  String loanAmount, String expenseAmount, String term) {
     this.bsmv = bsmv;
     this.interest = interest;
     this.kkdf = kkdf;

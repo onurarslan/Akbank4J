@@ -1,6 +1,7 @@
 package org.akbank4j.core.request;
 
 /**
+ * Akbank API'ye gönderilecek parametreler burda yer almaktadır.
  *
  * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
  */

@@ -8,10 +8,9 @@ import java.net.URLEncoder;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.akbank4j.core.request.AkbankParameters;
 import org.akbank4j.core.api.AkbankUrl;
 import org.akbank4j.core.api.IAkbank;
-import org.akbank4j.core.authentication.Configuration;
+import org.akbank4j.core.conf.Configuration;
 import org.akbank4j.core.conf.Connection;
 import org.akbank4j.core.models.CreditApplicationServiceModel;
 import org.akbank4j.core.models.CreditInterestRatesModel;
@@ -21,6 +20,7 @@ import org.akbank4j.core.models.FindAtmModel;
 import org.akbank4j.core.models.FindBranchModel;
 import org.akbank4j.core.models.FundPricesModel;
 import org.akbank4j.core.models.StockValuesModel;
+import org.akbank4j.core.request.AkbankParameters;
 import org.akbank4j.core.request.CreditCardAppRequest;
 import org.akbank4j.core.request.CreditPaymentPlanRequest;
 import org.akbank4j.core.request.FindRequest;
@@ -34,6 +34,13 @@ public class Akbank
 
   private Connection conn;
 
+  /**
+   * API'nin çalıştırılması için konfigurasyon yapılmsaı gerekemektedir.
+   * <pre>{@code Configuration conf = new Configuration("your_api_key_name", "your_api_key");
+   * Akbank akbank = new Akbank(conf);}</pre>
+   *
+   * @param conf Configuration.class
+   */
   public Akbank(Configuration conf) {
     conn = new Connection(conf);
   }

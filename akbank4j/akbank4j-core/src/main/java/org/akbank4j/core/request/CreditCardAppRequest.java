@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.akbank4j.core.request;
 
 /**
@@ -33,9 +28,24 @@ public class CreditCardAppRequest {
   /** Application name of the API consumer application (Required) */
   private String application;
 
+  /**
+   * Kredi kartı isteği bulunurken parametreyi sınıf olarak göndermek istenildiğinde kullanılır.
+   */
   public CreditCardAppRequest() {
   }
 
+  /**
+   * Kredi kartı isteği bulunurken parametreyi sınıf olarak göndermek istenildiğinde kullanılır. Bu kullanımda ikinci ad
+   * yoktur.
+   * <pre>{@code CreditCardAppRequest creditCardReq = new CreditCardAppRequest("Ali", "Doğru", "ali.dogru@akbank.com", "05359112233", "127762123454", "ApplicationX");</pre>
+   *
+   * @param name           Ad
+   * @param surname        Soyad
+   * @param email          E-Posta
+   * @param phoneNumber    Telefon
+   * @param identityNumber T.C Kimlik No
+   * @param application    Uygulama
+   */
   public CreditCardAppRequest(String name, String surname, String email,
                               String phoneNumber, String identityNumber, String application) {
     this.name = name;
@@ -48,6 +58,19 @@ public class CreditCardAppRequest {
 
   }
 
+  /**
+   * Kredi kartı isteği bulunurken parametreyi sınıf olarak göndermek istenildiğinde kullanılır. Bu kullanımda ikinci ad
+   * vardır.
+   * <pre>{@code CreditCardAppRequest creditCardReq = new CreditCardAppRequest("Ali", "Veli", "Doğru", "ali.dogru@akbank.com", "05359112233", "127762123454", "ApplicationX");</pre>
+   *
+   * @param name           Ad
+   * @param secondName     İkinci Ad
+   * @param surname        Soyad
+   * @param email          E-Posta
+   * @param phoneNumber    Telefon
+   * @param identityNumber T.C Kimlik No
+   * @param application    Uygulama
+   */
   public CreditCardAppRequest(String name, String secondName, String surname, String email,
                               String phoneNumber, String identityNumber, String application) {
     this.name = name;
