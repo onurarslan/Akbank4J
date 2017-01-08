@@ -8,7 +8,7 @@ package org.akbank4j.core.request;
 /**
  * This API allows you to get credit payment plan.
  *
- * @author onur
+ * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
  */
 public class CreditPaymentPlanRequest {
 

@@ -22,6 +22,7 @@ import org.akbank4j.core.models.FindBranchModel;
 import org.akbank4j.core.models.FundPricesModel;
 import org.akbank4j.core.models.StockValuesModel;
 import org.akbank4j.core.request.CreditPaymentPlanRequest;
+import org.akbank4j.core.request.FindRequest;
 
 /**
  *
@@ -155,6 +156,17 @@ public class Akbank
   }
 
   @Override
+  public Akbank4J<List<FindAtmModel>> getFindATM(FindRequest findATM) {
+    return getFindATM(findATM.getLatitude(), findATM.getLongitude(), findATM.getRadius(), findATM.getCity(), findATM.
+                      getDistrict(), findATM.getSearchText());
+  }
+
+  @Override
+  public Akbank4J<List<FindAtmModel>> getFindATM(String latitude, String longitude, String radius) {
+    return getFindATM(latitude, longitude, radius, null, null, null);
+  }
+
+  @Override
   public Akbank4J<List<FindAtmModel>> getFindATM(String latitude, String longitude, String radius,
                                                  String city, String district,
                                                  String searchText) {
@@ -169,6 +181,17 @@ public class Akbank
     return new Gson().fromJson(conn.json,
                                new TypeToken<Akbank4J<List<FindAtmModel>>>() {
                        }.getType());
+  }
+
+  @Override
+  public Akbank4J<FindBranchModel> getFindBranch(FindRequest findBranch) {
+    return getFindBranch(findBranch.getLatitude(), findBranch.getLongitude(), findBranch.getRadius(), findBranch.
+                         getCity(), findBranch.getDistrict(), findBranch.getSearchText());
+  }
+
+  @Override
+  public Akbank4J<FindBranchModel> getFindBranch(String latitude, String longitude, String radius) {
+    return getFindBranch(latitude, longitude, radius, null, null, null);
   }
 
   @Override
