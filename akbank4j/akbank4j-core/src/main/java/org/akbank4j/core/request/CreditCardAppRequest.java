@@ -33,6 +33,33 @@ public class CreditCardAppRequest {
   /** Application name of the API consumer application (Required) */
   private String application;
 
+  public CreditCardAppRequest() {
+  }
+
+  public CreditCardAppRequest(String name, String surname, String email,
+                              String phoneNumber, String identityNumber, String application) {
+    this.name = name;
+    this.secondName = null;
+    this.surname = surname;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+    this.identityNumber = identityNumber;
+    this.application = application;
+
+  }
+
+  public CreditCardAppRequest(String name, String secondName, String surname, String email,
+                              String phoneNumber, String identityNumber, String application) {
+    this.name = name;
+    this.secondName = secondName;
+    this.surname = surname;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+    this.identityNumber = identityNumber;
+    this.application = application;
+
+  }
+
   public String getName() {
     return name;
   }

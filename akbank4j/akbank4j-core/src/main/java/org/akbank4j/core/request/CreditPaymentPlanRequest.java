@@ -36,6 +36,23 @@ public class CreditPaymentPlanRequest {
   /** Term in months. (Required) */
   private String term;
 
+  public CreditPaymentPlanRequest() {
+  }
+
+  public CreditPaymentPlanRequest(String bsmv, String interest, String kkdf,
+                                  String loanStartDate, String loanUsingDate,
+                                  String loanAmount, String expenseAmount,
+                                  String term) {
+    this.bsmv = bsmv;
+    this.interest = interest;
+    this.kkdf = kkdf;
+    this.loanStartDate = loanStartDate;
+    this.loanUsingDate = loanUsingDate;
+    this.loanAmount = loanAmount;
+    this.expenseAmount = expenseAmount;
+    this.term = term;
+  }
+
   public String getBsmv() {
     return bsmv;
   }
