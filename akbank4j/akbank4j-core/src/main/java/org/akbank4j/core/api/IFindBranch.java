@@ -7,7 +7,7 @@ import org.akbank4j.core.request.FindRequest;
 /**
  * Bu API belirtilen arama alanında yakın şube bulmanızı sağlar.
  *
- * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
+ * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
 public interface IFindBranch {
 
@@ -22,7 +22,7 @@ public interface IFindBranch {
    * @param district   İlçe
    * @param searchText Arama Metni
    *
-   * @return Akbank4J<FindBranchModel>
+   * @return Akbank4J
    */
   public Akbank4J<FindBranchModel> getFindBranch(String latitude, String longitude, String radius,
                                                  String city, String district,
@@ -36,7 +36,7 @@ public interface IFindBranch {
    * @param longitude Boylam
    * @param radius    Yarıçap
    *
-   * @return Akbank4J<FindBranchModel>
+   * @return Akbank4J
    */
   public Akbank4J<FindBranchModel> getFindBranch(String latitude, String longitude, String radius);
 
@@ -47,7 +47,7 @@ public interface IFindBranch {
    *
    * @param findBranch FindRequest.class
    *
-   * @return Akbank4J<FindBranchModel>
+   * @return Akbank4J
    */
   public Akbank4J<FindBranchModel> getFindBranch(FindRequest findBranch);
 

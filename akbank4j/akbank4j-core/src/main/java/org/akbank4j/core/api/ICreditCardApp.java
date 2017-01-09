@@ -6,7 +6,7 @@ import org.akbank4j.core.request.CreditCardAppRequest;
 /**
  * Bu API, Akbank kredi kartı başvurusunda bulunmanıza izin verir.
  *
- * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
+ * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
 public interface ICreditCardApp {
 

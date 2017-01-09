@@ -6,7 +6,7 @@ import org.akbank4j.core.models.FundPricesModel;
 /**
  * Fon Fiyatları API mevcut fon değerleri almak için izin verir.
  *
- * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
+ * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
 public interface IFindPrices {
 
@@ -18,7 +18,7 @@ public interface IFindPrices {
    *
    * @param fundType Fon Türü
    *
-   * @return Akbank4J<FundPricesModel>
+   * @return Akbank4J
    */
   public Akbank4J<FundPricesModel> getFindPrices(String fundType);
 

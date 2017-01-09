@@ -3,7 +3,7 @@ package org.akbank4j.core.conf;
 /**
  * API Konfigurasyonu
  *
- * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
+ * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
 public class Configuration {
 
@@ -13,10 +13,10 @@ public class Configuration {
 
   /**
    * Konfigurasyon ayarları akbank api'den elde ettiğiniz api adı ve api key yazılmalıdır.
-   * {@code Configuration conf = new Configuration("your_api_key_name", "your_api_key");}</pre>
+   * <pre>{@code Configuration conf = new Configuration("your_api_key_name", "your_api_key");}</pre>
    *
-   * @param name
-   * @param value
+   * @param name  api key name
+   * @param value api key
    */
   public Configuration(String name, String value) {
     this.name = name;

@@ -6,7 +6,7 @@ import org.akbank4j.core.models.CreditInterestRatesModel;
 /**
  * Kredi Faiz Oranları API size güncel faiz oranlarını almanızı sağlar.
  *
- * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
+ * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
 public interface ICreditInterestRate {
 
@@ -17,7 +17,7 @@ public interface ICreditInterestRate {
    *
    * @param creditType Kredi Türü seçilir
    *
-   * @return Akbank4J<CreditInterestRatesModel>
+   * @return Akbank4J
    */
   public Akbank4J<CreditInterestRatesModel> getCreditInterestRate(String creditType);
 

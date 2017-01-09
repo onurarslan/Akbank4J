@@ -1,0 +1,6 @@
+org.akbank4j.core
+org.akbank4j.core.api
+org.akbank4j.core.conf
+org.akbank4j.core.models
+org.akbank4j.core.records
+org.akbank4j.core.request

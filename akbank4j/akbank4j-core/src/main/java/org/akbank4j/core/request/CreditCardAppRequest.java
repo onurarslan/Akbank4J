@@ -3,7 +3,7 @@ package org.akbank4j.core.request;
 /**
  * This API allows you to apply for Akbank credit card.
  *
- * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
+ * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
 public class CreditCardAppRequest {
 
@@ -37,7 +37,7 @@ public class CreditCardAppRequest {
   /**
    * Kredi kartı isteği bulunurken parametreyi sınıf olarak göndermek istenildiğinde kullanılır. Bu kullanımda ikinci ad
    * yoktur.
-   * <pre>{@code CreditCardAppRequest creditCardReq = new CreditCardAppRequest("Ali", "Doğru", "ali.dogru@akbank.com", "05359112233", "127762123454", "ApplicationX");</pre>
+   * <pre>{@code CreditCardAppRequest creditCardReq = new CreditCardAppRequest("Ali", "Doğru", "ali.dogru@akbank.com", "05359112233", "127762123454", "ApplicationX");}</pre>
    *
    * @param name           Ad
    * @param surname        Soyad
@@ -61,7 +61,7 @@ public class CreditCardAppRequest {
   /**
    * Kredi kartı isteği bulunurken parametreyi sınıf olarak göndermek istenildiğinde kullanılır. Bu kullanımda ikinci ad
    * vardır.
-   * <pre>{@code CreditCardAppRequest creditCardReq = new CreditCardAppRequest("Ali", "Veli", "Doğru", "ali.dogru@akbank.com", "05359112233", "127762123454", "ApplicationX");</pre>
+   * <pre>{@code CreditCardAppRequest creditCardReq = new CreditCardAppRequest("Ali", "Veli", "Doğru", "ali.dogru@akbank.com", "05359112233", "127762123454", "ApplicationX");}</pre>
    *
    * @param name           Ad
    * @param secondName     İkinci Ad

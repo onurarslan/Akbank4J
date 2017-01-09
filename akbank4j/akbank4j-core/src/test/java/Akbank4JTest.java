@@ -24,7 +24,7 @@ import org.junit.Test;
 
 /**
  *
- * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
+ * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
 public class Akbank4JTest {
 

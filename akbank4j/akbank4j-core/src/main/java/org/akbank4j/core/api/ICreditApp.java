@@ -6,7 +6,7 @@ import org.akbank4j.core.models.CreditApplicationServiceModel;
 /**
  * Bu API, Akbank kredisini kullanmanıza izin verir.
  *
- * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
+ * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
 public interface ICreditApp {
 
@@ -16,7 +16,7 @@ public interface ICreditApp {
    * @param phoneNumber    Telefon numarası
    * @param identityNumber T.C Kimlik Numarası
    *
-   * @return Akbank4J<CreditApplicationServiceModel>
+   * @return Akbank4J
    */
   public Akbank4J<CreditApplicationServiceModel> getCreditApp(String phoneNumber, String identityNumber);
 

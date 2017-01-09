@@ -6,7 +6,7 @@ import org.akbank4j.core.models.StockValuesModel;
 /**
  * StockValues API mevcut hisse senedi değerleri almak için izin verir.
  *
- * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
+ * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
 public interface IStockValues {
 
@@ -16,7 +16,7 @@ public interface IStockValues {
    *
    * @param symbol Hisse Senedi Sembolü
    *
-   * @return Akbank4J<StockValuesModel>
+   * @return Akbank4J
    */
   public Akbank4J<StockValuesModel> getStockValues(String symbol);
 

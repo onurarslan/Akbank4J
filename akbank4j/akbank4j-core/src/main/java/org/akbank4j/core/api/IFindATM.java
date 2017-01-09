@@ -8,7 +8,7 @@ import org.akbank4j.core.request.FindRequest;
 /**
  * Bu API belirtilen arama alanında ATM bulmanızı sağlar.
  *
- * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
+ * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
 public interface IFindATM {
 
@@ -23,7 +23,7 @@ public interface IFindATM {
    * @param district   İlçe
    * @param searchText Arama Metni
    *
-   * @return Akbank4J<List<FindAtmModel>>
+   * @return Akbank4J
    */
   public Akbank4J<List<FindAtmModel>> getFindATM(String latitude, String longitude, String radius,
                                                  String city, String district,
@@ -37,7 +37,7 @@ public interface IFindATM {
    * @param longitude Boylam
    * @param radius    Yarıçap
    *
-   * @return Akbank4J<List<FindAtmModel>>
+   * @return Akbank4J
    */
   public Akbank4J<List<FindAtmModel>> getFindATM(String latitude, String longitude, String radius);
 
@@ -48,7 +48,7 @@ public interface IFindATM {
    *
    * @param findATM FindRequest.class
    *
-   * @return Akbank4J<List<FindAtmModel>>
+   * @return Akbank4J
    */
   public Akbank4J<List<FindAtmModel>> getFindATM(FindRequest findATM);
 

@@ -7,7 +7,7 @@ import org.akbank4j.core.request.CreditPaymentPlanRequest;
 /**
  * Bu API, kredi ödeme planını almanızı sağlar.
  *
- * @author Onur Arslan <arslan.onur.41@gmail.com> onurarslan.org
+ * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
 public interface ICreditPaymentPlan {
 
@@ -24,7 +24,7 @@ public interface ICreditPaymentPlan {
    * @param expenseAmount Masraf tutarı. (Gereklidir)
    * @param term          Aylık vadesi. (Gereklidir)
    *
-   * @return Akbank4J<CreditPaymentPlanModel>
+   * @return Akbank4J
    */
   public Akbank4J<CreditPaymentPlanModel> getCreditPaymentPlan(String bsmv, String interest, String kkdf,
                                                                String loanStartDate, String loanUsingDate,
@@ -39,7 +39,7 @@ public interface ICreditPaymentPlan {
    *
    * @param creditPaymentPlan CreditPaymentPlanRequest.class
    *
-   * @return Akbank4J<CreditPaymentPlanModel>
+   * @return Akbank4J
    */
   public Akbank4J<CreditPaymentPlanModel> getCreditPaymentPlan(CreditPaymentPlanRequest creditPaymentPlan);
 
