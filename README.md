@@ -5,7 +5,24 @@ Akbank4J for Akbank Api
 Akbank4J ile Akbank API tarafından verilen hizmetleri kullanabilirsiniz.
 
 https://apiportal.akbank.com/ üye olun ve api key elde edin.
-[akbank4j-core.jar](http://akbank4j.org/akbank4j-core.jar) ve [akbank4j-core-javadoc.jar](http://akbank4j.org/akbank4j-core-javadoc.jar) dosyalarını indirin. Projenizin lib dosyasının içine kopyalayın.
+[akbank4j-core.jar](http://akbank4j.org/akbank4j-core.jar) ve [akbank4j-core-javadoc.jar](http://akbank4j.org/akbank4j-core-javadoc.jar) dosyalarını indirin. Projenizin resources dosyasının içine kopyalayın. projenizin pom.xml dosyasına aşağıda ki kodu ekleyin.
+
+#### pom.xml
+
+    <repositories>
+        <repository>
+            <id>resources</id>
+            <url>file://${project.basedir}/src/main/resources</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>org.akbank4j</groupId>
+            <artifactId>akbank4j-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
 ----------
 
