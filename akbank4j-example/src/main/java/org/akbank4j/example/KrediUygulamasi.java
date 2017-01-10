@@ -13,7 +13,7 @@ import org.akbank4j.core.request.AkbankParameters;
  *
  * @author Onur Arslan
  */
-public class KrediUygulaması {
+public class KrediUygulamasi {
 
   public static void main(String[] args)
           throws IOException {
@@ -21,6 +21,7 @@ public class KrediUygulaması {
     Configuration conf = new Configuration("your_api_key_name", "your_api_key");
     IAkbank akbank = new Akbank(conf);
 
+    //**********TÜKETİCİ KREDİSİ************
     CreditInterestRatesModel tuketiciKredisi = akbank.getCreditInterestRate(
             AkbankParameters.CreditInterestRates.CONSUMER_LOAN).getData();
 
@@ -45,6 +46,7 @@ public class KrediUygulaması {
       System.out.println("");
     }
 
+    //********MORTGAGE KREDİSİ*************/
     CreditInterestRatesModel mortgageKredi = akbank.getCreditInterestRate(
             AkbankParameters.CreditInterestRates.MORTGAGE_LOAN).getData();
 
@@ -69,6 +71,7 @@ public class KrediUygulaması {
       System.out.println("");
     }
 
+    //************TAŞIT KREDİSİ*******************
     CreditInterestRatesModel tasitKredisi = akbank.getCreditInterestRate(
             AkbankParameters.CreditInterestRates.CAR_LOAN).getData();
 
