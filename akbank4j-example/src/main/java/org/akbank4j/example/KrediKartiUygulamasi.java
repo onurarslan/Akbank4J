@@ -9,6 +9,7 @@ import org.akbank4j.core.request.CreditCardAppRequest;
 
 /**
  * Akbank Kredi kartı talebinde bulunmada kullanılır
+ *
  * @author Onur Arslan
  */
 public class KrediKartiUygulamasi {
@@ -21,13 +22,13 @@ public class KrediKartiUygulamasi {
     //*************parametre nesne kullanmadan*************
     Akbank4J krediKarti = akbank.getCreditCardApp("Ali", "Veli", "Doğru", "ali.dogru@akbank.com", "05359112233",
                                                   "127762123454", "ApplicationX");
-    System.out.println(krediKarti.getReturnMessage());
+    System.out.println("Başvuru Mesajı: " + krediKarti.getReturnMessage());
 
     //*****************parametre nesne kullanarak*********
     CreditCardAppRequest krediKartParam = new CreditCardAppRequest("Ali", "Veli", "Doğru", "ali.dogru@akbank.com",
                                                                    "05359112233", "127762123454", "ApplicationX");
     krediKarti = akbank.getCreditCardApp(krediKartParam);
-    System.out.println(krediKarti.getReturnMessage());
+    System.out.println("Başvuru Mesajı: " + krediKarti.getReturnMessage());
   }
 
 }
