@@ -33,8 +33,8 @@ public class Akbank4JTest {
 
   @Before
   public void setUp() {
-    conf = new Configuration("your_api_key_name", "your_api_key");
-    akbank = new Akbank(conf);
+    conf = new Configuration("apikey", "l7xx5d0708c914394f4b8ddb21db8ee77f53");
+    akbank = Akbank.getInstance(conf);
   }
 
   @After
@@ -144,13 +144,13 @@ public class Akbank4JTest {
   @Test
   public void testFindPrices() {
     System.out.println("testFindPrices Start...!");
-    Akbank4J<FundPricesModel> test = akbank.getFindPrices(AkbankParameters.FundPrices.TYPE_A);
+    Akbank4J<FundPricesModel> test = akbank.getFundPrices(AkbankParameters.FundPrices.TYPE_A);
     Assert.assertNotNull(test.getData());
 
-    test = akbank.getFindPrices(AkbankParameters.FundPrices.TYPE_B);
+    test = akbank.getFundPrices(AkbankParameters.FundPrices.TYPE_B);
     Assert.assertNotNull(test.getData());
 
-    test = akbank.getFindPrices(AkbankParameters.FundPrices.ALL);
+    test = akbank.getFundPrices(AkbankParameters.FundPrices.ALL);
     Assert.assertNotNull(test.getData());
 
     System.out.println("testFindPrices End...!");

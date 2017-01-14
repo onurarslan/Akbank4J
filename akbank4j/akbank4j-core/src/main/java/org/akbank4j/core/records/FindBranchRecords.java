@@ -12,6 +12,9 @@ public class FindBranchRecords {
   /** True if the branch open on weekend. */
   private boolean isOpenOnWeekend;
 
+  /** Name associated with branch */
+  private String name;
+
   /** True if the branch open at noon. */
   private boolean isOpenAtNoon;
 
@@ -41,6 +44,14 @@ public class FindBranchRecords {
 
   public void setIsOpenOnWeekend(boolean isOpenOnWeekend) {
     this.isOpenOnWeekend = isOpenOnWeekend;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public boolean isIsOpenAtNoon() {

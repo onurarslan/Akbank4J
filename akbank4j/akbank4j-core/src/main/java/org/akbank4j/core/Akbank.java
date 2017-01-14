@@ -32,17 +32,38 @@ import org.akbank4j.core.request.FindRequest;
 public class Akbank
         implements IAkbank {
 
-  private Connection conn;
+  private static Connection conn;
+  private static IAkbank instance;
+
+  private Akbank() {
+  }
 
   /**
-   * API'nin çalıştırılması için konfigurasyon yapılmsaı gerekemektedir.
+   * API'nin çalıştırılması için konfigurasyon yapılmsaı gerekmektedir.
    * <pre>{@code Configuration conf = new Configuration("your_api_key_name", "your_api_key");
-   * Akbank akbank = new Akbank(conf);}</pre>
+   * Akbank akbank = Akbank.getInstance();}</pre>
+   *
+   *
+   */
+  public static IAkbank getInstance() {
+    if (instance == null) {
+      instance = new Akbank();
+    }
+    return instance;
+  }
+
+  /**
+   * API'nin çalıştırılması için konfigurasyon yapılmsaı gerekmektedir.
+   * <pre>{@code Configuration conf = new Configuration("your_api_key_name", "your_api_key");
+   * Akbank akbank = Akbank.getInstance(conf);}</pre>
    *
    * @param conf Configuration.class
    */
-  public Akbank(Configuration conf) {
-    conn = new Connection(conf);
+  public static IAkbank getInstance(Configuration conf) {
+    if (conn == null) {
+      conn = new Connection(conf);
+    }
+    return getInstance();
   }
 
   @Override
@@ -100,7 +121,7 @@ public class Akbank
   }
 
   @Override
-  public Akbank4J<FundPricesModel> getFindPrices(String fundType) {
+  public Akbank4J<FundPricesModel> getFundPrices(String fundType) {
     try {
       StringBuilder sb = new StringBuilder();
       sb.append("?");

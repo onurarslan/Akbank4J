@@ -13,7 +13,7 @@ public interface IAkbank
                 IExchangeRates,
                 IFindATM,
                 IFindBranch,
-                IFindPrices,
+                IFundPrices,
                 IStockValues {
 
 }
