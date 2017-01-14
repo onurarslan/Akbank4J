@@ -17,7 +17,7 @@ public class KrediKartiUygulamasi {
   public static void main(String[] args)
           throws IOException {
     Configuration conf = new Configuration("your_api_key_name", "your_api_key");
-    IAkbank akbank = new Akbank(conf);
+    IAkbank akbank = Akbank.getInstance(conf);
 
     //*************parametre nesne kullanmadan*************
     Akbank4J krediKarti = akbank.getCreditCardApp("Ali", "Veli", "Doğru", "ali.dogru@akbank.com", "05359112233",

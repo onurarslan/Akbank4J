@@ -19,7 +19,7 @@ public class KrediUygulamasi {
           throws IOException {
 
     Configuration conf = new Configuration("your_api_key_name", "your_api_key");
-    IAkbank akbank = new Akbank(conf);
+    IAkbank akbank = Akbank.getInstance(conf);
 
     //**********TÜKETİCİ KREDİSİ************
     CreditInterestRatesModel tuketiciKredisi = akbank.getCreditInterestRate(

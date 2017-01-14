@@ -16,7 +16,7 @@ public class KrediOdemePlani {
 
   public static void main(String[] args) {
     Configuration conf = new Configuration("your_api_key_name", "your_api_key");
-    IAkbank akbank = new Akbank(conf);
+    IAkbank akbank = Akbank.getInstance(conf);
 
     //*****************PARAMETRE NESNE KULLANMADAN****************//
     CreditPaymentPlanModel krediOdemePlani = akbank.getCreditPaymentPlan("0.1234", "1.25", "0.1034", "2015-11-10",
