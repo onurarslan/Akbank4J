@@ -1,5 +1,8 @@
 package org.akbank4j.core.request;
 
+import java.util.Date;
+import org.akbank4j.core.Akbank4jDateUtil;
+
 /**
  * This API allows you to get credit payment plan.
  *
@@ -58,6 +61,32 @@ public class CreditPaymentPlanRequest {
     this.loanAmount = loanAmount;
     this.expenseAmount = expenseAmount;
     this.term = term;
+  }
+
+  /**
+   * Kredi ödeme planı almanızı sağlar.
+   *
+   * <pre>{@code CreditPaymentPlanRequest creditPaymentReq = new CreditPaymentPlanRequest(0.1234, 1.25, 0.1034, "2015-11-10", "2015-11-10", 5000, 10, 36);}</pre>
+   *
+   * @param bsmv          Bankacılık ve Sigortacılık İşlemleri Vergisi Tutarı. (Gereklidir)
+   * @param interest      Faiz oranı. (Gereklidir)
+   * @param kkdf          Kaynak Kullanım Destekleme Fonu. (Gereklidir)
+   * @param loanStartDate İlk ödemenin tarihi .Yyyy-AA-gg biçimindedir. (Gereklidir)
+   * @param loanUsingDate Kredi fonlarının alındığı tarih .yyyy-AA-gg biçiminde. (Gereklidir)
+   * @param loanAmount    Kredinin miktarı. (Gereklidir)
+   * @param expenseAmount Masraf tutarı. (Gereklidir)
+   * @param term          Aylık vadesi. (Gereklidir)
+   */
+  public CreditPaymentPlanRequest(double bsmv, double interest, double kkdf, Date loanStartDate, Date loanUsingDate,
+                                  int loanAmount, int expenseAmount, int term) {
+    this.bsmv = String.valueOf(bsmv);
+    this.interest = String.valueOf(interest);
+    this.kkdf = String.valueOf(kkdf);
+    this.loanStartDate = Akbank4jDateUtil.toAkbankFormat(loanStartDate);
+    this.loanUsingDate = Akbank4jDateUtil.toAkbankFormat(loanUsingDate);
+    this.loanAmount = String.valueOf(loanAmount);
+    this.expenseAmount = String.valueOf(expenseAmount);
+    this.term = String.valueOf(term);
   }
 
   public String getBsmv() {

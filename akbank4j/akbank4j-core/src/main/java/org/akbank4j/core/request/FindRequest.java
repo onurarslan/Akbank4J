@@ -32,16 +32,7 @@ public class FindRequest {
   /** The text string on which to search, for example: "İstanbul", "akbank", "ank". (Optional) */
   private String searchText;
 
-  public FindRequest() {
-  }
-
-  public FindRequest(String latitude, String longitude, String radius) {
-    this.latitude = latitude;
-    this.longitude = longitude;
-    this.radius = radius;
-    this.city = null;
-    this.district = null;
-    this.searchText = null;
+  private FindRequest() {
   }
 
   public FindRequest(String latitude, String longitude, String radius,
@@ -52,6 +43,19 @@ public class FindRequest {
     this.city = city;
     this.district = district;
     this.searchText = searchText;
+  }
+
+  public FindRequest(double latitude, double longitude, int radius,
+                     String city, String district, String searchText) {
+    this(String.valueOf(latitude), String.valueOf(longitude), String.valueOf(radius), city, district, searchText);
+  }
+
+  public FindRequest(String latitude, String longitude, String radius) {
+    this(latitude, longitude, radius, null, null, null);
+  }
+
+  public FindRequest(double latitude, double longitude, int radius) {
+    this(String.valueOf(latitude), String.valueOf(longitude), String.valueOf(radius));
   }
 
   public String getLatitude() {

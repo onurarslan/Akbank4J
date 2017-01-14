@@ -1,5 +1,6 @@
 package org.akbank4j.core.api;
 
+import java.util.Date;
 import org.akbank4j.core.Akbank4J;
 import org.akbank4j.core.models.ExchangeRatesModel;
 
@@ -18,20 +19,37 @@ public interface IExchangeRates {
    */
   public Akbank4J<ExchangeRatesModel> getExchangeRates();
 
-  /**
-   * isTwoParam false ise; parametre tipi ve değeri gönderilir.
-   * <pre>{@code Akbank4J<ExchangeRatesModel> exchangeRate = akbank.getExchangeRates(AkbankParameters.ExchangeRates.DATE, "2016-02-01", false);
-   * Akbank4J<ExchangeRatesModel> exchangeRate = akbank.getExchangeRates(AkbankParameters.ExchangeRates.CURRENCY_CODE, "002", false);}</pre>
-   * isTwoParam true ise; iki tane parametre aynı anda gönderilecektir. İlk parametreye currencyCode, ikinci parametreye
-   * date yazılır.
-   * <pre>{@code Akbank4J<ExchangeRatesModel> exchangeRate = akbank.getExchangeRates("001", "2015-10-08", true);}</pre>
+  /** Para Birimi Koduna göre döviz kuru bilgisi edinmenizi sağlar.
+   * <pre>{@code Akbank4J<ExchangeRatesModel> exchangeRate = akbank.getExchangeRates("002");}</pre>
    *
-   * @param param      tek parametre/currencyCode
-   * @param value      tek parametre değeri/date
-   * @param isTwoParam tek parametre ise false çift ise true
+   * @param currencyCode Para Birimi Kodu
    *
    * @return Akbank4J
    */
-  public Akbank4J<ExchangeRatesModel> getExchangeRates(String param, String value, boolean isTwoParam);
+  public Akbank4J<ExchangeRatesModel> getExchangeRates(String currencyCode);
+
+  /**
+   * Beliritlen tarihe göre döviz kuru bilgisi edinmenizi sağlar.
+   *
+   * <pre>{@code Date date = Date.valueOf("2015-10-08");
+   * Akbank4J<ExchangeRatesModel> exchangeRate = akbank.getExchangeRates(date);}</pre>
+   *
+   * @param date Tarih
+   *
+   * @return Akbank4J
+   */
+  public Akbank4J<ExchangeRatesModel> getExchangeRates(Date date);
+
+  /**
+   * Tanımlanan para birimi kodunu, tanımlanan tarihte ki bilgisini edinmenizi sağlar.
+   * <pre>{@code Date date = Date.valueOf("2015-10-08");
+   * Akbank4J<ExchangeRatesModel> exchangeRate = akbank.getExchangeRates("002", date);}</pre>
+   *
+   * @param currencyCode Para Birimi Kodu
+   * @param date         Tarih
+   *
+   * @return Akbank4J
+   */
+  public Akbank4J<ExchangeRatesModel> getExchangeRates(String currencyCode, Date date);
 
 }

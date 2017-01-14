@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -94,8 +95,21 @@ public class Akbank
 
   }
 
-  @Override
-  public Akbank4J<ExchangeRatesModel> getExchangeRates(String param, String value, boolean isTwoParam) {
+  /**
+   * isTwoParam false ise; parametre tipi ve değeri gönderilir.
+   * <pre>{@code Akbank4J<ExchangeRatesModel> exchangeRate = akbank.getExchangeRates(AkbankParameters.ExchangeRates.DATE, "2016-02-01", false);
+   * Akbank4J<ExchangeRatesModel> exchangeRate = akbank.getExchangeRates(AkbankParameters.ExchangeRates.CURRENCY_CODE, "002", false);}</pre>
+   * isTwoParam true ise; iki tane parametre aynı anda gönderilecektir. İlk parametreye currencyCode, ikinci parametreye
+   * date yazılır.
+   * <pre>{@code Akbank4J<ExchangeRatesModel> exchangeRate = akbank.getExchangeRates("001", "2015-10-08", true);}</pre>
+   *
+   * @param param      tek parametre/currencyCode
+   * @param value      tek parametre değeri/date
+   * @param isTwoParam tek parametre ise false çift ise true
+   *
+   * @return Akbank4J
+   */
+  private Akbank4J<ExchangeRatesModel> getExchangeRates(String param, String value, boolean isTwoParam) {
     try {
       StringBuilder sb = new StringBuilder();
       if (isTwoParam) {
@@ -118,6 +132,21 @@ public class Akbank
       Logger.getLogger(Akbank.class.getName()).log(Level.SEVERE, null, ex);
     }
     return null;
+  }
+
+  @Override
+  public Akbank4J<ExchangeRatesModel> getExchangeRates(String currencyCode) {
+    return getExchangeRates(AkbankParameters.ExchangeRates.CURRENCY_CODE, currencyCode, false);
+  }
+
+  @Override
+  public Akbank4J<ExchangeRatesModel> getExchangeRates(Date date) {
+    return getExchangeRates(AkbankParameters.ExchangeRates.DATE, Akbank4jDateUtil.toAkbankFormat(date), false);
+  }
+
+  @Override
+  public Akbank4J<ExchangeRatesModel> getExchangeRates(String currencyCode, Date date) {
+    return getExchangeRates(currencyCode, Akbank4jDateUtil.toAkbankFormat(date), true);
   }
 
   @Override
@@ -185,20 +214,18 @@ public class Akbank
   }
 
   @Override
-  public Akbank4J<List<FindAtmModel>> getFindATM(FindRequest findATM) {
-    return getFindATM(findATM.getLatitude(), findATM.getLongitude(), findATM.getRadius(), findATM.getCity(), findATM.
-                      getDistrict(), findATM.getSearchText());
-  }
-
-  @Override
-  public Akbank4J<List<FindAtmModel>> getFindATM(String latitude, String longitude, String radius) {
-    return getFindATM(latitude, longitude, radius, null, null, null);
+  public Akbank4J<CreditPaymentPlanModel> getCreditPaymentPlan(double bsmv, double interest, double kkdf,
+                                                               Date loanStartDate, Date loanUsingDate,
+                                                               int loanAmount, int expenseAmount, int term) {
+    return getCreditPaymentPlan(String.valueOf(bsmv), String.valueOf(interest), String.valueOf(kkdf),
+                                Akbank4jDateUtil.toAkbankFormat(loanStartDate),
+                                Akbank4jDateUtil.toAkbankFormat(loanUsingDate),
+                                String.valueOf(loanAmount), String.valueOf(expenseAmount), String.valueOf(term));
   }
 
   @Override
   public Akbank4J<List<FindAtmModel>> getFindATM(String latitude, String longitude, String radius,
-                                                 String city, String district,
-                                                 String searchText) {
+                                                 String city, String district, String searchText) {
     JsonObject jdata = new JsonObject();
     jdata.addProperty(AkbankParameters.FindATM.LATITUDE, latitude);
     jdata.addProperty(AkbankParameters.FindATM.LONGITUDE, longitude);
@@ -213,14 +240,27 @@ public class Akbank
   }
 
   @Override
-  public Akbank4J<FindBranchModel> getFindBranch(FindRequest findBranch) {
-    return getFindBranch(findBranch.getLatitude(), findBranch.getLongitude(), findBranch.getRadius(), findBranch.
-                         getCity(), findBranch.getDistrict(), findBranch.getSearchText());
+  public Akbank4J<List<FindAtmModel>> getFindATM(double latitude, double longitude, int radius,
+                                                 String city, String district, String searchText) {
+    return getFindATM(String.valueOf(latitude), String.valueOf(longitude), String.valueOf(radius), city, district,
+                      searchText);
+
   }
 
   @Override
-  public Akbank4J<FindBranchModel> getFindBranch(String latitude, String longitude, String radius) {
-    return getFindBranch(latitude, longitude, radius, null, null, null);
+  public Akbank4J<List<FindAtmModel>> getFindATM(String latitude, String longitude, String radius) {
+    return getFindATM(latitude, longitude, radius, null, null, null);
+  }
+
+  @Override
+  public Akbank4J<List<FindAtmModel>> getFindATM(double latitude, double longitude, int radius) {
+    return getFindATM(String.valueOf(latitude), String.valueOf(longitude), String.valueOf(radius), null, null, null);
+  }
+
+  @Override
+  public Akbank4J<List<FindAtmModel>> getFindATM(FindRequest findATM) {
+    return getFindATM(findATM.getLatitude(), findATM.getLongitude(), findATM.getRadius(), findATM.getCity(), findATM.
+                      getDistrict(), findATM.getSearchText());
   }
 
   @Override
@@ -239,6 +279,28 @@ public class Akbank
     return new Gson().fromJson(conn.json,
                                new TypeToken<Akbank4J<FindBranchModel>>() {
                        }.getType());
+  }
+
+  @Override
+  public Akbank4J<FindBranchModel> getFindBranch(double latitude, double longitude, int radius, String city,
+                                                 String district, String searchText) {
+    return getFindBranch(String.valueOf(latitude), String.valueOf(longitude), String.valueOf(radius), null, null, null);
+  }
+
+  @Override
+  public Akbank4J<FindBranchModel> getFindBranch(String latitude, String longitude, String radius) {
+    return getFindBranch(latitude, longitude, radius, null, null, null);
+  }
+
+  @Override
+  public Akbank4J<FindBranchModel> getFindBranch(double latitude, double longitude, int radius) {
+    return getFindBranch(String.valueOf(latitude), String.valueOf(longitude), String.valueOf(radius), null, null, null);
+  }
+
+  @Override
+  public Akbank4J<FindBranchModel> getFindBranch(FindRequest findBranch) {
+    return getFindBranch(findBranch.getLatitude(), findBranch.getLongitude(), findBranch.getRadius(), findBranch.
+                         getCity(), findBranch.getDistrict(), findBranch.getSearchText());
   }
 
   @Override

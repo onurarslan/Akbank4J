@@ -30,6 +30,22 @@ public interface IFindBranch {
 
   /**
    * Belirtilen arama alanında yakın şube bulmanızı sağlar.
+   * <pre>{@code Akbank4J<FindBranchModel> findBranch = akbank.getFindBranch(41.008238, 28.978359, 1000, null, null, null);}</pre>
+   *
+   * @param latitude   Enlem
+   * @param longitude  Boylam
+   * @param radius     Yarıçap
+   * @param city       İl
+   * @param district   İlçe
+   * @param searchText Arama Metni
+   *
+   * @return Akbank4J
+   */
+  public Akbank4J<FindBranchModel> getFindBranch(double latitude, double longitude, int radius, String city,
+                                                 String district, String searchText);
+
+  /**
+   * Belirtilen arama alanında yakın şube bulmanızı sağlar.
    * <pre>{@code Akbank4J<FindBranchModel> findBranch = akbank.getFindBranch("41.008238", "28.978359", "1000");}</pre>
    *
    * @param latitude  Enlem
@@ -39,6 +55,18 @@ public interface IFindBranch {
    * @return Akbank4J
    */
   public Akbank4J<FindBranchModel> getFindBranch(String latitude, String longitude, String radius);
+
+  /**
+   * Belirtilen arama alanında yakın şube bulmanızı sağlar.
+   * <pre>{@code Akbank4J<FindBranchModel> findBranch = akbank.getFindBranch(41.008238, 28.978359, 1000);}</pre>
+   *
+   * @param latitude  Enlem
+   * @param longitude Boylam
+   * @param radius    Yarıçap
+   *
+   * @return Akbank4J
+   */
+  public Akbank4J<FindBranchModel> getFindBranch(double latitude, double longitude, int radius);
 
   /**
    * Belirtilen arama alanında yakın şube bulmanızı sağlar.

@@ -26,8 +26,23 @@ public interface IFindATM {
    * @return Akbank4J
    */
   public Akbank4J<List<FindAtmModel>> getFindATM(String latitude, String longitude, String radius,
-                                                 String city, String district,
-                                                 String searchText);
+                                                 String city, String district, String searchText);
+
+  /**
+   * Belirtilen arama alanında ATM bulmanızı sağlar.
+   * <pre>{@code Akbank4J<List<FindAtmModel>> findATM = akbank.getFindATM(41.008238, 28.978359, 1000, null, null, null);}</pre>
+   *
+   * @param latitude   Enlem
+   * @param longitude  Boylam
+   * @param radius     Yarıçap
+   * @param city       İl
+   * @param district   İlçe
+   * @param searchText Arama Metni
+   *
+   * @return Akbank4J
+   */
+  public Akbank4J<List<FindAtmModel>> getFindATM(double latitude, double longitude, int radius, String city,
+                                                 String district, String searchText);
 
   /**
    * Belirtilen arama alanında ATM bulmanızı sağlar.
@@ -40,6 +55,18 @@ public interface IFindATM {
    * @return Akbank4J
    */
   public Akbank4J<List<FindAtmModel>> getFindATM(String latitude, String longitude, String radius);
+
+  /**
+   * Belirtilen arama alanında ATM bulmanızı sağlar.
+   * <pre>{@code Akbank4J<List<FindAtmModel>> findATM = akbank.getFindATM(41.008238, 28.978359, 1000);}</pre>
+   *
+   * @param latitude  Enlem
+   * @param longitude Boylam
+   * @param radius    Yarıçap
+   *
+   * @return Akbank4J
+   */
+  public Akbank4J<List<FindAtmModel>> getFindATM(double latitude, double longitude, int radius);
 
   /**
    * Belirtilen arama alanında ATM bulmanızı sağlar.
