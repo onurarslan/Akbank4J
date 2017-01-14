@@ -42,7 +42,7 @@ Akbank API Hizmetleri
 Konfigurasyon
 -------------
     Configuration conf = new Configuration("your_api_key_name", "your_api_key");
-    IAkbank akbank = new Akbank(conf);
+    IAkbank akbank = Akbank.getInstance(conf);
 
 
 > **Not:**
