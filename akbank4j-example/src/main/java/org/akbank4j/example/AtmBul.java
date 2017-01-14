@@ -31,8 +31,36 @@ public class AtmBul {
       System.out.println();
     }
 
+    //**********TAM PARAMETRE LİSTESİ STRİNG HARİÇ TİPLER**********//
+    yakinATM = akbank.getFindATM(41.008238, 28.978359, 1000, null, null, null).getData();
+    for (FindAtmModel atm : yakinATM) {
+      System.out.println("Şehir: " + atm.getCity());
+      System.out.println("Bölge: " + atm.getDistrict());
+      System.out.println("Adres: " + atm.getAddress());
+      System.out.println("ATM Adı: " + atm.getName());
+      System.out.println("Enlem: " + atm.getLatitude());
+      System.out.println("Boylam: " + atm.getLongitude());
+      System.out.println("ATM/BTM: " + atm.getDeviceType());
+      System.out.println("Exchange İzni: " + atm.isExchangeAvailable());
+      System.out.println();
+    }
+
     //**********AZLATILMIŞ PARAMETRE LİSTESİ************//
     yakinATM = akbank.getFindATM("41.008238", "28.978359,", "1000").getData();
+    for (FindAtmModel atm : yakinATM) {
+      System.out.println("Şehir: " + atm.getCity());
+      System.out.println("Bölge: " + atm.getDistrict());
+      System.out.println("Adres: " + atm.getAddress());
+      System.out.println("ATM Adı: " + atm.getName());
+      System.out.println("Enlem: " + atm.getLatitude());
+      System.out.println("Boylam: " + atm.getLongitude());
+      System.out.println("ATM/BTM: " + atm.getDeviceType());
+      System.out.println("Exchange İzni: " + atm.isExchangeAvailable());
+      System.out.println();
+    }
+
+    //**********AZLATILMIŞ PARAMETRE LİSTESİ STRING HARİÇ TİPLER************//
+    yakinATM = akbank.getFindATM(41.008238, 28.978359, 1000).getData();
     for (FindAtmModel atm : yakinATM) {
       System.out.println("Şehir: " + atm.getCity());
       System.out.println("Bölge: " + atm.getDistrict());
@@ -60,8 +88,38 @@ public class AtmBul {
       System.out.println();
     }
 
+    //***************TAM PARAMETRE LİSTESİ NESNE STRING HARİÇ TİPLER******/////////////
+    atmFind = new FindRequest(41.008238, 28.978359, 1000, null, null, null);
+    yakinATM = akbank.getFindATM(atmFind).getData();
+    for (FindAtmModel atm : yakinATM) {
+      System.out.println("Şehir: " + atm.getCity());
+      System.out.println("Bölge: " + atm.getDistrict());
+      System.out.println("Adres: " + atm.getAddress());
+      System.out.println("ATM Adı: " + atm.getName());
+      System.out.println("Enlem: " + atm.getLatitude());
+      System.out.println("Boylam: " + atm.getLongitude());
+      System.out.println("ATM/BTM: " + atm.getDeviceType());
+      System.out.println("Exchange İzni: " + atm.isExchangeAvailable());
+      System.out.println();
+    }
+
     //***********AZALTILMIŞ PARAMETRE LİSTESİ NESNE******////
     atmFind = new FindRequest("41.008238", "28.978359,", "1000");
+    yakinATM = akbank.getFindATM(atmFind).getData();
+    for (FindAtmModel atm : yakinATM) {
+      System.out.println("Şehir: " + atm.getCity());
+      System.out.println("Bölge: " + atm.getDistrict());
+      System.out.println("Adres: " + atm.getAddress());
+      System.out.println("ATM Adı: " + atm.getName());
+      System.out.println("Enlem: " + atm.getLatitude());
+      System.out.println("Boylam: " + atm.getLongitude());
+      System.out.println("ATM/BTM: " + atm.getDeviceType());
+      System.out.println("Exchange İzni: " + atm.isExchangeAvailable());
+      System.out.println();
+    }
+
+    //***********AZALTILMIŞ PARAMETRE LİSTESİ NESNE STRING HARİÇ TİLER******////
+    atmFind = new FindRequest(41.008238, 28.978359, 1000);
     yakinATM = akbank.getFindATM(atmFind).getData();
     for (FindAtmModel atm : yakinATM) {
       System.out.println("Şehir: " + atm.getCity());

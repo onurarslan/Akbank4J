@@ -32,8 +32,37 @@ public class SubeBul {
       System.out.println();
     }
 
+    //*******TAM PARAMETRE LİSTE STRING HARİÇ TİPLER****//////
+    yakinSube = akbank.getFindBranch(41.008238, 28.978359, 1000, null, null, null).
+            getData().getBranchRecords();
+    for (FindBranchRecords sube : yakinSube) {
+      System.out.println("ATM Var Mı: " + sube.isHasAtm());
+      System.out.println("Haftasonları Açık Mı: " + sube.isIsOpenOnWeekend());
+      System.out.println("Şube Adı: " + sube.getName());
+      System.out.println("Öğle Vakti Açık Mı:" + sube.isIsOpenAtNoon());
+      System.out.println("Enlem: " + sube.getLatitude());
+      System.out.println("Boylam: " + sube.getLongitude());
+      System.out.println("Telefon NUmarası: " + sube.getPhoneNumber());
+      System.out.println("Güvenli Kasaya Sahip Mi: " + sube.isHasSafeBox());
+      System.out.println();
+    }
+
     //**********AZALTILMIŞ PARAMETRE LİSTE**********/////
     yakinSube = akbank.getFindBranch("41.008238", "28.978359,", "1000").getData().getBranchRecords();
+    for (FindBranchRecords sube : yakinSube) {
+      System.out.println("ATM Var Mı: " + sube.isHasAtm());
+      System.out.println("Haftasonları Açık Mı: " + sube.isIsOpenOnWeekend());
+      System.out.println("Şube Adı: " + sube.getName());
+      System.out.println("Öğle Vakti Açık Mı:" + sube.isIsOpenAtNoon());
+      System.out.println("Enlem: " + sube.getLatitude());
+      System.out.println("Boylam: " + sube.getLongitude());
+      System.out.println("Telefon NUmarası: " + sube.getPhoneNumber());
+      System.out.println("Güvenli Kasaya Sahip Mi: " + sube.isHasSafeBox());
+      System.out.println();
+    }
+
+    //**********AZALTILMIŞ PARAMETRE LİSTE STRING HARİÇ TİPLER**********/////
+    yakinSube = akbank.getFindBranch(41.008238, 28.978359, 1000).getData().getBranchRecords();
     for (FindBranchRecords sube : yakinSube) {
       System.out.println("ATM Var Mı: " + sube.isHasAtm());
       System.out.println("Haftasonları Açık Mı: " + sube.isIsOpenOnWeekend());
@@ -61,8 +90,38 @@ public class SubeBul {
       System.out.println();
     }
 
+    //********TAM PARAMETRE LİSTE NESNE STRING HARİÇ TİPLER********//
+    subeBul = new FindRequest(41.008238, 28.978359, 1000, null, null, null);
+    yakinSube = akbank.getFindBranch(subeBul).getData().getBranchRecords();
+    for (FindBranchRecords sube : yakinSube) {
+      System.out.println("ATM Var Mı: " + sube.isHasAtm());
+      System.out.println("Haftasonları Açık Mı: " + sube.isIsOpenOnWeekend());
+      System.out.println("Şube Adı: " + sube.getName());
+      System.out.println("Öğle Vakti Açık Mı:" + sube.isIsOpenAtNoon());
+      System.out.println("Enlem: " + sube.getLatitude());
+      System.out.println("Boylam: " + sube.getLongitude());
+      System.out.println("Telefon NUmarası: " + sube.getPhoneNumber());
+      System.out.println("Güvenli Kasaya Sahip Mi: " + sube.isHasSafeBox());
+      System.out.println();
+    }
+
     //********AZALTILMIŞ PARAMETRE LİSTE NESNE*********//
     subeBul = new FindRequest("41.008238", "28.978359,", "1000");
+    yakinSube = akbank.getFindBranch(subeBul).getData().getBranchRecords();
+    for (FindBranchRecords sube : yakinSube) {
+      System.out.println("ATM Var Mı: " + sube.isHasAtm());
+      System.out.println("Haftasonları Açık Mı: " + sube.isIsOpenOnWeekend());
+      System.out.println("Şube Adı: " + sube.getName());
+      System.out.println("Öğle Vakti Açık Mı:" + sube.isIsOpenAtNoon());
+      System.out.println("Enlem: " + sube.getLatitude());
+      System.out.println("Boylam: " + sube.getLongitude());
+      System.out.println("Telefon NUmarası: " + sube.getPhoneNumber());
+      System.out.println("Güvenli Kasaya Sahip Mi: " + sube.isHasSafeBox());
+      System.out.println();
+    }
+
+    //********AZALTILMIŞ PARAMETRE LİSTE NESNE STRING HARİÇ TİPLER*********//
+    subeBul = new FindRequest(41.008238, 28.978359, 1000);
     yakinSube = akbank.getFindBranch(subeBul).getData().getBranchRecords();
     for (FindBranchRecords sube : yakinSube) {
       System.out.println("ATM Var Mı: " + sube.isHasAtm());

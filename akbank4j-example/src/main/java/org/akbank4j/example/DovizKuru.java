@@ -1,10 +1,10 @@
 package org.akbank4j.example;
 
+import java.sql.Date;
 import org.akbank4j.core.Akbank;
 import org.akbank4j.core.api.IAkbank;
 import org.akbank4j.core.conf.Configuration;
 import org.akbank4j.core.models.ExchangeRatesModel;
-import org.akbank4j.core.request.AkbankParameters;
 
 /**
  *
@@ -30,7 +30,8 @@ public class DovizKuru {
     System.out.println();
 
     //****************TEK PARAMETRE TARİH*************///////
-    kur = akbank.getExchangeRates(AkbankParameters.ExchangeRates.DATE, "2016-02-01", false).getData();
+    Date date = Date.valueOf("2016-02-01");
+    kur = akbank.getExchangeRates(date).getData();
     System.out.println("Satış Fiyatı: " + kur.getSellPrice());
     System.out.println("Alış Fiyatı: " + kur.getBuyPrice());
     System.out.println("USD Çapraz Kur: " + kur.getUsdCrossRate());
@@ -43,7 +44,7 @@ public class DovizKuru {
     System.out.println();
 
     //*********************TEK PAREMETRE PARA BİRİMİ KODU********************
-    kur = akbank.getExchangeRates(AkbankParameters.ExchangeRates.CURRENCY_CODE, "002", false).getData();
+    kur = akbank.getExchangeRates("002").getData();
     System.out.println("Satış Fiyatı: " + kur.getSellPrice());
     System.out.println("Alış Fiyatı: " + kur.getBuyPrice());
     System.out.println("USD Çapraz Kur: " + kur.getUsdCrossRate());
@@ -56,7 +57,7 @@ public class DovizKuru {
     System.out.println();
 
     //*******************İKİ PARAMETRE*******************////
-    kur = akbank.getExchangeRates("001", "2015-10-08", true).getData();
+    kur = akbank.getExchangeRates("001", date).getData();
     System.out.println("Satış Fiyatı: " + kur.getSellPrice());
     System.out.println("Alış Fiyatı: " + kur.getBuyPrice());
     System.out.println("USD Çapraz Kur: " + kur.getUsdCrossRate());
