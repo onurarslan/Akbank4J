@@ -47,7 +47,7 @@ Konfigurasyon
 
 > **Not:**
 
-> - Akbank API tarafından hize verilen API'nin name ve key bilgilerini yukarıda yazmalısınız.
+> - Akbank API tarafından bize verilen API'nin name ve key bilgilerini yukarıda yazmalısınız.
 
 
 #### Örnekler
