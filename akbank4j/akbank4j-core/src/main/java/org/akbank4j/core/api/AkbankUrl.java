@@ -5,7 +5,7 @@ package org.akbank4j.core.api;
  *
  * @author <a href="mailto:arslan.onur.41@gmail.com">Onur Arslan </a> onurarslan.org
  */
-public interface AkbankUrl {
+public class AkbankUrl {
 
   public static final String CreditInterestRates = "/creditInterestRates";
 
@@ -24,5 +24,9 @@ public interface AkbankUrl {
   public static final String CreditAppService = "/applyForCredit";
 
   public static final String CreditCardAppService = "/applyForCreditCard";
+
+  private AkbankUrl() {
+
+  }
 
 }
