@@ -7,22 +7,22 @@ package org.akbank4j.core.api;
  */
 public interface AkbankUrl {
 
-  public String CreditInterestRates = "/creditInterestRates";
+  public static final String CreditInterestRates = "/creditInterestRates";
 
-  public String ExchangeRates = "/exchangeRatesApi";
+  public static final String ExchangeRates = "/exchangeRatesApi";
 
-  public String FindPrices = "/fundPrices";
+  public static final String FindPrices = "/fundPrices";
 
-  public String StockValues = "/stockValues";
+  public static final String StockValues = "/stockValues";
 
-  public String CreditPaymentPlan = "/creditPaymentPlan";
+  public static final String CreditPaymentPlan = "/creditPaymentPlan";
 
-  public String FindAtm = "/findATM";
+  public static final String FindAtm = "/findATM";
 
-  public String FindBranch = "/findBranch";
+  public static final String FindBranch = "/findBranch";
 
-  public String CreditAppService = "/applyForCredit";
+  public static final String CreditAppService = "/applyForCredit";
 
-  public String CreditCardAppService = "/applyForCreditCard";
+  public static final String CreditCardAppService = "/applyForCreditCard";
 
 }
