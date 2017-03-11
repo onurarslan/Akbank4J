@@ -34,7 +34,7 @@ public class Akbank4JTest {
 
   @Before
   public void setUp() {
-    conf = new Configuration("apikey", "l7xx5d0708c914394f4b8ddb21db8ee77f53");
+    conf = new Configuration("your_api_key_name", "your_api_key");
     akbank = Akbank.getInstance(conf);
   }
 
