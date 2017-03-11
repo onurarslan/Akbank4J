@@ -13,8 +13,8 @@
 
     <repositories>
         <repository>
-            <id>resources</id>
-            <url>file://${project.basedir}/src/main/resources</url>
+            <id>akbank4j</id>
+            <url>https://github.com/onurarslan/Akbank4J</url>
         </repository>
     </repositories>
     <dependencies>
