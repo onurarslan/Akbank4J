@@ -1,14 +1,9 @@
 package org.akbank4j.core;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.akbank4j.core.api.AkbankUrl;
 import org.akbank4j.core.api.IAkbank;
 import org.akbank4j.core.conf.Configuration;
@@ -69,29 +64,18 @@ public class Akbank
 
   @Override
   public Akbank4J<CreditInterestRatesModel> getCreditInterestRate(String creditType) {
-    try {
-      StringBuilder sb = new StringBuilder();
-      sb.append("?");
-      sb.append(URLEncoder.encode(AkbankParameters.CreditInterestRates.NAME, "UTF-8") + "="
-              + URLEncoder.encode(creditType, "UTF-8"));
-      conn.openConnection(AkbankUrl.CreditInterestRates, AkbankParameters.HTTP_METHOD.GET, sb.toString());
-      return new Gson().fromJson(conn.json,
-                                 new TypeToken<Akbank4J<CreditInterestRatesModel>>() {
-                         }.getType());
-    } catch (UnsupportedEncodingException ex) {
-      Logger.getLogger(Akbank.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    return null;
+    String url = AkbankUrl.CreditInterestRates + "?" + AkbankParameters.CreditInterestRates.NAME + "=" + creditType;
+    return conn.openConnection(url, AkbankParameters.HTTP_METHOD.GET,
+                               new TypeToken<Akbank4J<CreditInterestRatesModel>>() {
+                       });
+
   }
 
   @Override
   public Akbank4J<ExchangeRatesModel> getExchangeRates() {
-    {
-      conn.openConnection(AkbankUrl.ExchangeRates, AkbankParameters.HTTP_METHOD.GET);
-      return new Gson().fromJson(conn.json,
-                                 new TypeToken<Akbank4J<ExchangeRatesModel>>() {
-                         }.getType());
-    }
+    return conn.openConnection(AkbankUrl.ExchangeRates, AkbankParameters.HTTP_METHOD.GET,
+                               new TypeToken<Akbank4J<ExchangeRatesModel>>() {
+                       });
 
   }
 
@@ -110,28 +94,16 @@ public class Akbank
    * @return Akbank4J
    */
   private Akbank4J<ExchangeRatesModel> getExchangeRates(String param, String value, boolean isTwoParam) {
-    try {
-      StringBuilder sb = new StringBuilder();
-      if (isTwoParam) {
-        sb.append("?");
-        sb.append(URLEncoder.encode(AkbankParameters.ExchangeRates.CURRENCY_CODE, "UTF-8") + "="
-                + URLEncoder.encode(param, "UTF-8"));
-        sb.append("?");
-        sb.append(URLEncoder.encode(AkbankParameters.ExchangeRates.DATE, "UTF-8") + "="
-                + URLEncoder.encode(value, "UTF-8"));
-      } else {
-        sb.append("?");
-        sb.append(URLEncoder.encode(param, "UTF-8") + "="
-                + URLEncoder.encode(value, "UTF-8"));
-      }
-      conn.openConnection(AkbankUrl.ExchangeRates, AkbankParameters.HTTP_METHOD.GET, sb.toString());
-      return new Gson().fromJson(conn.json,
-                                 new TypeToken<Akbank4J<ExchangeRatesModel>>() {
-                         }.getType());
-    } catch (UnsupportedEncodingException ex) {
-      Logger.getLogger(Akbank.class.getName()).log(Level.SEVERE, null, ex);
+    StringBuilder url = new StringBuilder(AkbankUrl.ExchangeRates + "?");
+    if (isTwoParam) {
+      url.append(AkbankParameters.ExchangeRates.CURRENCY_CODE).append("=").append(param).append("?");
+      url.append(AkbankParameters.ExchangeRates.DATE).append("=").append(value);
+    } else {
+      url.append(param).append("=").append(value);
     }
-    return null;
+    return conn.openConnection(url.toString(), AkbankParameters.HTTP_METHOD.GET,
+                               new TypeToken<Akbank4J<ExchangeRatesModel>>() {
+                       });
   }
 
   @Override
@@ -151,36 +123,19 @@ public class Akbank
 
   @Override
   public Akbank4J<FundPricesModel> getFundPrices(String fundType) {
-    try {
-      StringBuilder sb = new StringBuilder();
-      sb.append("?");
-      sb.append(URLEncoder.encode(AkbankParameters.FundPrices.NAME, "UTF-8") + "="
-              + URLEncoder.encode(fundType, "UTF-8"));
-      conn.openConnection(AkbankUrl.FindPrices, AkbankParameters.HTTP_METHOD.GET, sb.toString());
-      return new Gson().fromJson(conn.json,
-                                 new TypeToken<Akbank4J<FundPricesModel>>() {
-                         }.getType());
-    } catch (UnsupportedEncodingException ex) {
-      Logger.getLogger(Akbank.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    return null;
+    String url = AkbankUrl.ExchangeRates + "?" + AkbankParameters.FundPrices.NAME + "=" + fundType;
+    return conn.openConnection(url, AkbankParameters.HTTP_METHOD.GET,
+                               new TypeToken<Akbank4J<FundPricesModel>>() {
+                       });
+
   }
 
   @Override
   public Akbank4J<StockValuesModel> getStockValues(String symbol) {
-    try {
-      StringBuilder sb = new StringBuilder();
-      sb.append("?");
-      sb.append(URLEncoder.encode(AkbankParameters.StockValues.NAME, "UTF-8") + "="
-              + URLEncoder.encode(symbol, "UTF-8"));
-      conn.openConnection(AkbankUrl.StockValues, AkbankParameters.HTTP_METHOD.GET, sb.toString());
-      return new Gson().fromJson(conn.json,
-                                 new TypeToken<Akbank4J<StockValuesModel>>() {
-                         }.getType());
-    } catch (UnsupportedEncodingException ex) {
-      Logger.getLogger(Akbank.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    return null;
+    String url = AkbankUrl.StockValues + "?" + AkbankParameters.StockValues.NAME + "=" + symbol;
+    return conn.openConnection(url, AkbankParameters.HTTP_METHOD.GET,
+                               new TypeToken<Akbank4J<StockValuesModel>>() {
+                       });
   }
 
   @Override
@@ -197,6 +152,7 @@ public class Akbank
                                                                String loanStartDate, String loanUsingDate,
                                                                String loanAmount, String expenseAmount,
                                                                String term) {
+
     JsonObject jdata = new JsonObject();
     jdata.addProperty(AkbankParameters.CreditPaymentPlan.BSMV, bsmv);
     jdata.addProperty(AkbankParameters.CreditPaymentPlan.INTEREST, interest);
@@ -207,10 +163,9 @@ public class Akbank
     jdata.addProperty(AkbankParameters.CreditPaymentPlan.EXPENSE_AMOUNT, expenseAmount);
     jdata.addProperty(AkbankParameters.CreditPaymentPlan.TERM, term);
 
-    conn.openConnection(AkbankUrl.CreditPaymentPlan, AkbankParameters.HTTP_METHOD.POST, jdata.toString());
-    return new Gson().fromJson(conn.json,
+    return conn.openConnection(AkbankUrl.CreditPaymentPlan, AkbankParameters.HTTP_METHOD.POST, jdata.toString(),
                                new TypeToken<Akbank4J<CreditPaymentPlanModel>>() {
-                       }.getType());
+                       });
   }
 
   @Override
@@ -233,10 +188,10 @@ public class Akbank
     jdata.addProperty(AkbankParameters.FindATM.CITY, city);
     jdata.addProperty(AkbankParameters.FindATM.DISTRICT, district);
     jdata.addProperty(AkbankParameters.FindATM.SEARCH_TEXT, searchText);
-    conn.openConnection(AkbankUrl.FindAtm, AkbankParameters.HTTP_METHOD.POST, jdata.toString());
-    return new Gson().fromJson(conn.json,
+
+    return conn.openConnection(AkbankUrl.FindAtm, AkbankParameters.HTTP_METHOD.POST, jdata.toString(),
                                new TypeToken<Akbank4J<List<FindAtmModel>>>() {
-                       }.getType());
+                       });
   }
 
   @Override
@@ -275,10 +230,9 @@ public class Akbank
     jdata.addProperty(AkbankParameters.FindBranch.DISTRICT, district);
     jdata.addProperty(AkbankParameters.FindBranch.SEARCH_TEXT, searchText);
 
-    conn.openConnection(AkbankUrl.FindBranch, AkbankParameters.HTTP_METHOD.POST, jdata.toString());
-    return new Gson().fromJson(conn.json,
+    return conn.openConnection(AkbankUrl.FindBranch, AkbankParameters.HTTP_METHOD.POST, jdata.toString(),
                                new TypeToken<Akbank4J<FindBranchModel>>() {
-                       }.getType());
+                       });
   }
 
   @Override
@@ -309,10 +263,9 @@ public class Akbank
     jdata.addProperty(AkbankParameters.CreditAppService.PHONE_NUMBER, phoneNumber);
     jdata.addProperty(AkbankParameters.CreditAppService.IDENTITY_NUMBER, identityNumber);
 
-    conn.openConnection(AkbankUrl.CreditAppService, AkbankParameters.HTTP_METHOD.POST, jdata.toString());
-    return new Gson().fromJson(conn.json,
+    return conn.openConnection(AkbankUrl.CreditAppService, AkbankParameters.HTTP_METHOD.POST, jdata.toString(),
                                new TypeToken<Akbank4J<CreditApplicationServiceModel>>() {
-                       }.getType());
+                       });
   }
 
   @Override
@@ -340,9 +293,8 @@ public class Akbank
     jdata.addProperty(AkbankParameters.CreditCardAppService.IDENTITY_NUMBER, identityNumber);
     jdata.addProperty(AkbankParameters.CreditCardAppService.APPLICATION, application);
 
-    conn.openConnection(AkbankUrl.CreditCardAppService, AkbankParameters.HTTP_METHOD.POST, jdata.toString());
-    return new Gson().fromJson(conn.json,
+    return conn.openConnection(AkbankUrl.CreditCardAppService, AkbankParameters.HTTP_METHOD.POST, jdata.toString(),
                                new TypeToken<Akbank4J>() {
-                       }.getType());
+                       });
   }
 }

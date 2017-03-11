@@ -34,7 +34,7 @@ public class Akbank4JTest {
 
   @Before
   public void setUp() {
-    conf = new Configuration("your_api_key_name", "your_api_key");
+    conf = new Configuration("apikey", "l7xx5d0708c914394f4b8ddb21db8ee77f53");
     akbank = Akbank.getInstance(conf);
   }
 
@@ -55,9 +55,8 @@ public class Akbank4JTest {
   @Test
   public void testCreditCardApp() {
     System.out.println("testCreditCardApp Start...!");
-    Akbank4J<CreditCardApplicationModel> test = akbank.getCreditCardApp("Ali", "Veli", "Doğru",
-                                                                        "ali.dogru@akbank.com", "05359112233",
-                                                                        "127762123454", "ApplicationX");
+    Akbank4J<CreditCardApplicationModel> test = akbank.getCreditCardApp("Ali", "Veli", "Doğru", "ali.dogru@akbank.com",
+                                                                        "05359112233", "127762123454", "ApplicationX");
     Assert.assertEquals("Credit Card Application has been successfully completed.", test.getReturnMessage());
     System.out.println("testCreditCardApp End...!");
   }
@@ -68,7 +67,8 @@ public class Akbank4JTest {
 
     CreditCardAppRequest creditCardReq = new CreditCardAppRequest("Ali", "Veli", "Doğru", "ali.dogru@akbank.com",
                                                                   "05359112233", "127762123454", "ApplicationX");
-    Akbank4J<CreditCardApplicationModel> test = akbank.getCreditCardApp(creditCardReq);
+    Akbank4J<CreditCardApplicationModel> test
+            = akbank.getCreditCardApp(creditCardReq);
     Assert.assertEquals("Credit Card Application has been successfully completed.", test.getReturnMessage());
     System.out.println("testCreditCardAppReq End...!");
   }
@@ -100,8 +100,7 @@ public class Akbank4JTest {
   @Test
   public void testCreditPaymentPlanReq() {
     System.out.println("testCreditPaymentPlanReq Start...!");
-    CreditPaymentPlanRequest creditPaymentReq = new CreditPaymentPlanRequest("0.1234", "1.25",
-                                                                             "0.1034", "2015-11-10",
+    CreditPaymentPlanRequest creditPaymentReq = new CreditPaymentPlanRequest("0.1234", "1.25", "0.1034", "2015-11-10",
                                                                              "2015-11-10", "5000", "10", "36");
     Akbank4J<CreditPaymentPlanModel> test = akbank.getCreditPaymentPlan(creditPaymentReq);
     Assert.assertNotNull(test.getData());
@@ -113,14 +112,14 @@ public class Akbank4JTest {
     System.out.println("testExchangeRate Start...!");
     Akbank4J<ExchangeRatesModel> test = akbank.getExchangeRates();
     Assert.assertNotNull(test.getData());
+    System.out.println(test.getData().getBanknoteBuying());
 
     Date date = Date.valueOf("2015-10-08");
     test = akbank.getExchangeRates(date);
     Assert.assertNotNull(test.getData());
 
-    test = akbank.getExchangeRates("002");
-    Assert.assertNotNull(test.getData());
-
+    //test = akbank.getExchangeRates("002");
+    //Assert.assertNotNull(test.getData());
     test = akbank.getExchangeRates("001", date);
     Assert.assertNotNull(test.getData());
 
@@ -130,7 +129,8 @@ public class Akbank4JTest {
   @Test
   public void testFindAtm() {
     System.out.println("testFindAtm Start...!");
-    Akbank4J<List<FindAtmModel>> test = akbank.getFindATM("41.008238", "28.978359", "1000", null, null, null);
+    Akbank4J<List<FindAtmModel>> test
+            = akbank.getFindATM("41.008238", "28.978359", "1000", null, null, null);
     Assert.assertNotNull(test.getData());
 
     test = akbank.getFindATM(41.008238, 28.978359, 1000, null, null, null);
@@ -147,7 +147,6 @@ public class Akbank4JTest {
 
     atmReq = new FindRequest(41.008238, 28.978359, 1000, null, null, null);
     test = akbank.getFindATM(atmReq);
-
     atmReq = new FindRequest("41.008238", "28.978359", "1000");
     test = akbank.getFindATM(atmReq);
 
@@ -161,7 +160,8 @@ public class Akbank4JTest {
   @Test
   public void testFindBranch() {
     System.out.println("testFindBranch Start...!");
-    Akbank4J<FindBranchModel> test = akbank.getFindBranch("41.008238", "28.978359", "1000", null, null, null);
+    Akbank4J<FindBranchModel> test
+            = akbank.getFindBranch("41.008238", "28.978359", "1000", null, null, null);
     Assert.assertNotNull(test.getData());
 
     test = akbank.getFindBranch(41.008238, 28.978359, 1000, null, null, null);
@@ -179,7 +179,8 @@ public class Akbank4JTest {
   @Test
   public void testFindPrices() {
     System.out.println("testFindPrices Start...!");
-    Akbank4J<FundPricesModel> test = akbank.getFundPrices(AkbankParameters.FundPrices.TYPE_A);
+    Akbank4J<FundPricesModel> test
+            = akbank.getFundPrices(AkbankParameters.FundPrices.TYPE_A);
     Assert.assertNotNull(test.getData());
 
     test = akbank.getFundPrices(AkbankParameters.FundPrices.TYPE_B);
@@ -196,7 +197,6 @@ public class Akbank4JTest {
     System.out.println("testStockValues Start...!");
     Akbank4J<StockValuesModel> test = akbank.getStockValues("AKBNK");
     Assert.assertNotNull(test.getData());
-    System.out.println("testStockValues End...!");
+    System.out.println("testStockValuesEnd...!");
   }
-
 }

@@ -1,5 +1,10 @@
 package org.akbank4j.core.conf;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,6 +24,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import org.akbank4j.core.Akbank4J;
 import org.akbank4j.core.request.AkbankParameters;
 
 /**
@@ -34,10 +40,34 @@ public class Connection {
     this.api = api;
   }
 
+  public Akbank4J openConnection(String url, String httpMethod, TypeToken akbankClassType) {
+    return openConnection(url, httpMethod, null, akbankClassType);
+
+  }
+
+  public Akbank4J openConnection(String url, String httpMethod, String postData, TypeToken akbankClassType) {
+    init();
+    Client client = Client.create();
+    WebResource webResource = client.resource("https://apigate.akbank.com/api/mock" + url);
+    ClientResponse response = null;
+    if (httpMethod.equals(AkbankParameters.HTTP_METHOD.GET)) {
+      response = webResource.header(api.getName(), api.getValue()).accept("application/json").get(
+              ClientResponse.class);
+    } else {
+      response = webResource.header(api.getName(), api.getValue()).accept("application/json").post(
+              ClientResponse.class, postData);
+    }
+
+    return new Gson().fromJson(response.getEntity(String.class), akbankClassType.getType());
+
+  }
+
+  @Deprecated
   public void openConnection(String address, String httpMethod) {
     openConnection(address, httpMethod, "");
   }
 
+  @Deprecated
   public void openConnection(String address, String httpMethod, String params) {
     HttpsURLConnection conn = null;
 
